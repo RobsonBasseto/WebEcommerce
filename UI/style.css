@@ -2,3 +2,66 @@ body{
     background-color: #CD7C42;
     color: white;
 }
+.btn{
+    color: white;
+    background-color: black;
+    border-color: black;
+    --bs-btn-hover-bg: #1d1818;
+    --bs-btn-hover-border-color: #1d1818;
+    --bs-btn-active-bg: #1d1818;
+    --bs-btn-active-border-color: white;
+    margin: 0 10px;
+
+   
+}
+#btn-logo{
+    color: white;
+    background-color: black;
+    border-color: black;
+    --bs-btn-hover-bg: black;
+    --bs-btn-hover-border-color: black;
+    --bs-btn-active-bg: black;
+    --bs-btn-active-border-color: white;
+    text-align: left;
+}
+
+.content{
+    text-align: center;
+}
+
+.content h1{
+    font-size: 130px;
+    color: #fff;
+    font-weight: 400;
+    font-family:'Times New Roman', Times, serif;
+}
+#btn-cardapio{
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    border: 2px solid #fff;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: #cd7c4200;
+    font-family: 'Times New Roman', Times, serif;
+}
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+@media (min-aspect-ratio: 16/9){
+    .back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    .back-video{
+        width: auto;
+        height: 100%;
+    }
+}
