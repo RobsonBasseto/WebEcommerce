@@ -1,5 +1,5 @@
 body{
-    background-color: #CD7C42;
+    background-color: #161620;
     color: white;
 }
 .btn{
@@ -47,6 +47,7 @@ body{
     background-color: #cd7c4200;
     font-family: 'Times New Roman', Times, serif;
 }
+                 
 .back-video{
     position: absolute;
     right: 0;
@@ -64,4 +65,11 @@ body{
         width: auto;
         height: 100%;
     }
+}
+
+#container-login{
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-top: 15%;
+    background-color: white;
 }
