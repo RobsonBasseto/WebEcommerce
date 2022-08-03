@@ -81,7 +81,7 @@ namespace API_WEB.Controllers
                     mycon.Close();
                 }
             }
-            return new JsonResult("Adicionado com sucesso!");
+            return new JsonResult("Criado com sucesso!");
         }
         [HttpPut]
         public JsonResult Put(Usuario usuario)

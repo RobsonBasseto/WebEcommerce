@@ -2,6 +2,7 @@ const routes=[
     {path:'/',component:home},
     {path:'/usuario',component:usuario},
     {path:'/login',component:login},
+    {path:'/esqueceu',component:esqueceu},
     {path:'/categoria',component:categoria},
     {path:'/lanche',component:lanche},
     {path:'/pedido',component:pedido}

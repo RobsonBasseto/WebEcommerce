@@ -11,8 +11,8 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-12">
-                    <label >Usuário:</label>
-                    <input type="text" class="form-control" id="ovTXT_usuario"/>
+                    <label >E-mail:</label>
+                    <input type="text" class="form-control"/>
                 </div>
             </div>
         </div>
@@ -20,18 +20,22 @@
             <div class="row">
                 <div class="col-md-12">
                     <label >Senha:</label>
-                    <input type="password" class="form-control" id="ovTXT_senha"/>
+                    <input type="password" class="form-control"/>
                 </div>
             </div>
         </div>
-        <a href="#">Esqueceu a senha?</a>
+        <router-link  class="btn btn-link" id="btn-esqueceu" to="/">Esqueceu a senha?</router-link>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" id="ovBTN_login" ><i class="fa fa-sign-in-alt"></i> Entrar</button>
+                    <button type="button" class="btn btn-primary" id="ovBTN_login">Entrar</button>
                 </div>
             </div>
-        <label>Não possui conta? <a href="#">Crie sua conta</a></label>
+            
+        <label>Não possui conta?</label>
+        <router-link  class="btn btn-link" id="btn-novo" to="/usuario">Crie sua conta</router-link>
+</div>               
+
         
 </body>                
 </html>

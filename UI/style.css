@@ -82,7 +82,7 @@ body{
     padding: 7px 40px;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #cd7c4200;
+    text-align: end;
 }
 
 #btn-esqueceu{
@@ -99,4 +99,35 @@ body{
     --bs-btn-hover-bg: #1a1515;
     --bs-btn-hover-border-color: #1a1515;
     --bs-btn-active-bg: #1a1515;
+    
+   
+}
+#container-cadastro{
+    position: absolute;
+    width: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 80px;
+    
+}
+#btn-Criar{
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;    
+    border: 2px solid #fff;
+    padding: 7px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#btn-enviar{
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;    
+    border: 2px solid #fff;
+    padding: 7px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: end;
 }
