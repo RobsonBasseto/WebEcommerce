@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "EZih9uUCnYmNtQFuvGq4bFo671XUxiCdR5D0J/SVyzNPVYAadtgbl+3M5jQhcsvsoSZvq7NXF+TzIWS1A/aMHA==",
+  "dgSpecHash": "L6Ovdj3CN4D8UkfUNgyBe2dEdIFProGiCVMnuzwmwa72IqF7JQUS72pwSxkPPz9uw4j7GeaiDKnr6mXTRKRLyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rr\\Desktop\\API WEB\\API WEB\\API WEB.csproj",
+  "projectFilePath": "D:\\Users\\rrobasseto\\Desktop\\Web Ecommerce\\API WEB\\API WEB.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rr\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.27\\microsoft.aspnetcore.jsonpatch.3.1.27.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.27\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.27.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\npgsql\\6.0.5\\npgsql.6.0.5.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\rr\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.27\\microsoft.aspnetcore.jsonpatch.3.1.27.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.27\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.27.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\npgsql\\6.0.5\\npgsql.6.0.5.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "D:\\Users\\rrobasseto\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
