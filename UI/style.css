@@ -84,3 +84,19 @@ body{
     margin-bottom: 20px;
     background-color: #cd7c4200;
 }
+
+#btn-esqueceu{
+    
+    background-color: #1a1515;
+    border-color: #1a1515;
+    --bs-btn-hover-bg: #1a1515;
+    --bs-btn-hover-border-color: #1a1515;
+    --bs-btn-active-bg: #1a1515;
+}
+#btn-novo{
+    background-color: #1a1515;
+    border-color: #1a1515;
+    --bs-btn-hover-bg: #1a1515;
+    --bs-btn-hover-border-color: #1a1515;
+    --bs-btn-active-bg: #1a1515;
+}
