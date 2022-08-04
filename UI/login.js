@@ -39,7 +39,7 @@ data(){
 },
 methods:{
     loginClick(){
-        axios.get(variaveis.API_URL+"usuario",{
+        axios.post(variaveis.API_URL+"login",{
             email:this.email,
             senha:this.senha
         }).then((response)=>{
