@@ -43,7 +43,10 @@ methods:{
             email:this.email,
             senha:this.senha
         }).then((response)=>{
-            alert(response.data);
+            console.log(response.data);
+            if(response.data != 404){
+                this.$router.push('/lanche')
+            }
         });
     }
 }

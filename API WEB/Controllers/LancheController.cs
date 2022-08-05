@@ -21,12 +21,9 @@ namespace API_WEB.Controllers
         public JsonResult Get()
         {
             string query = @"
-                select idlanche as ""idlanche"",
-                        nomelanche as ""nomelanche"",
-                        valorlanche as ""valorlanche"",
-                        descricaolanche as ""descricaolanche"",
-                        idcategoria as ""idcategoria""
-                from lanche
+                select l.idlanche,l.nomelanche,l.valorlanche,l.descricaolanche,
+                        c.idcategoria,c.nomecategoria
+                from lanche l join categoria c on c.idcategoria = l.idcategoria
             ";
 
             DataTable table = new DataTable();

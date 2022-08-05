@@ -68,7 +68,8 @@ namespace API_WEB.Controllers
                         rua as ""rua"",
                         bairro as ""bairro"",
                         numero as ""numero""
-                from usuario
+                from usuario where email = @email and senha = @senha;
+
             ";
             
             
@@ -79,11 +80,21 @@ namespace API_WEB.Controllers
                 mycon.Open();
                 using (NpgsqlCommand mycommand = new NpgsqlCommand(query, mycon))
                 {
+                    mycommand.Parameters.AddWithValue("@email", login.email);
+                    mycommand.Parameters.AddWithValue("@senha", login.senha);
                     myreader = mycommand.ExecuteReader();
                     myreader.Read();
 
-                    login.email = myreader.GetString("email");
-                    login.senha = myreader.GetString("senha");
+                    if (myreader.HasRows)
+                    {
+                        login.email = myreader.GetString("email");
+                        login.senha = myreader.GetString("senha");
+                    }
+                    else
+                    {
+                        return null;
+                    }                    
+
                     myreader.Close();
                     mycon.Close();
                 }
