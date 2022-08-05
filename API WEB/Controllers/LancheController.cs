@@ -1,8 +1,11 @@
 ﻿using API_WEB.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+using System;
 using System.Data;
+using System.IO;
 
 namespace API_WEB.Controllers
 {
@@ -11,10 +14,12 @@ namespace API_WEB.Controllers
     public class LancheController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _env;
 
-        public LancheController(IConfiguration configuration)
+        public LancheController(IConfiguration configuration,IWebHostEnvironment web)
         {
             _configuration = configuration;
+            _env = web;
         }
 
         [HttpGet]
@@ -22,7 +27,7 @@ namespace API_WEB.Controllers
         {
             string query = @"
                 select l.idlanche,l.nomelanche,l.valorlanche,l.descricaolanche,
-                        c.idcategoria,c.nomecategoria
+                       l.imagemlanche,c.idcategoria,c.nomecategoria
                 from lanche l join categoria c on c.idcategoria = l.idcategoria
             ";
 
@@ -47,8 +52,8 @@ namespace API_WEB.Controllers
         public JsonResult Post(Lanche lanche)
         {
             string query = @"
-                insert into lanche(nomelanche,valorlanche,descricaolanche,idcategoria)
-                values(@nomecategoria,@valorlanche,@descricaolanche,@idcategoria)
+                insert into lanche(nomelanche,valorlanche,descricaolanche,imagemlanche,idcategoria)
+                values(@nomecategoria,@valorlanche,@descricaolanche,@imagemlanche,@idcategoria)
             ";
 
             DataTable table = new DataTable();
@@ -62,6 +67,7 @@ namespace API_WEB.Controllers
                     mycommand.Parameters.AddWithValue("@nomecategoria", lanche.nomelanche);
                     mycommand.Parameters.AddWithValue("@valorlanche", lanche.valorlanche);
                     mycommand.Parameters.AddWithValue("@descricaolanche", lanche.descricaolanche);
+                    mycommand.Parameters.AddWithValue("@imagemlanche", lanche.imagemlanche);
                     mycommand.Parameters.AddWithValue("@idcategoria", lanche.idcategoria);
                     myreader = mycommand.ExecuteReader();
                     table.Load(myreader);
@@ -80,6 +86,7 @@ namespace API_WEB.Controllers
                 set nomelanche = @nomelanche,
                     valorlanche = @valorlanche,
                     descricaolanche = @descricaolanche,
+                    imagemlanche = @imagemlanche,
                     idcategoria = @idcategoria
                 where idlanche = @idlanche
             ";
@@ -96,6 +103,7 @@ namespace API_WEB.Controllers
                     mycommand.Parameters.AddWithValue("@nomelanche", lanche.nomelanche);
                     mycommand.Parameters.AddWithValue("@valorlanche", lanche.valorlanche);
                     mycommand.Parameters.AddWithValue("@descricaolanche", lanche.descricaolanche);
+                    mycommand.Parameters.AddWithValue("@imagemlanche", lanche.imagemlanche);
                     mycommand.Parameters.AddWithValue("@idcategoria", lanche.idcategoria);
                     myreader = mycommand.ExecuteReader();
                     table.Load(myreader);
@@ -132,6 +140,28 @@ namespace API_WEB.Controllers
                 }
             }
             return new JsonResult("Deletado com sucesso!");
+        }
+
+        [Route("SaveFile")]
+        [HttpPost]
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = _env.ContentRootPath + "/Photos/"+ filename;
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+                return new JsonResult(filename);
+            }
+            catch (Exception)
+            {
+                return new JsonResult("anonimo.png");
+            }
         }
     }
 }

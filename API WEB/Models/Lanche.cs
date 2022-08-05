@@ -6,6 +6,7 @@
         public string nomelanche { get; set; }
         public decimal valorlanche { get; set; }
         public string descricaolanche { get; set; }
+        public string imagemlanche { get; set; }
         public int idcategoria { get; set; }
     }
 }
