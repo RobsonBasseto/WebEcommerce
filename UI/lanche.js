@@ -40,27 +40,37 @@ const lanche={template:`
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Nome</span>
-                            <input type="text" class="form-control" v-model="nomelanche ">
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 w-50 bd-highlight">    
+                            <div class="input-group mb-3">
+                                    <span class="input-group-text">Nome</span>
+                                    <input type="text" class="form-control" v-model="nomelanche ">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Valor</span>
+                                    <input type="text" class="form-control" v-model="valorlanche ">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Descrição</span>
+                                    <input type="text" class="form-control" v-model="descricaolanche ">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Categoria</span>
+                                    <select class="form-select" v-model="categoria">
+                                        <option v-for="l in lanches">
+                                        {{l.nomecategoria}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                           
+                            <div class="p-2 w-50 bd-highlight">
+                                <img width="250" height="250"
+                                :src="photoPath+imagemlanche"/>
+                                <input class="m-2" type="file" @change="imageUpload" />
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Valor</span>
-                            <input type="text" class="form-control" v-model="valorlanche ">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Descrição</span>
-                            <input type="text" class="form-control" v-model="descricaolanche ">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Categoria</span>
-                            <input type="text" class="form-control" v-model="idcategoria">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Imagem</span>
-                            <input type="text" class="form-control" v-model="imagemlanche">
-                        </div>
-                        
+
                         <button type="button" @click="createClick()" v-if="idlanche==0" class="btn btn-primary">Salvar</button>
                         <button type="button" @click="updateClick()" v-if="idlanche!=0" class="btn btn-primary">Alterar</button>
                     </div>
@@ -72,13 +82,17 @@ const lanche={template:`
 data(){
     return{
         lanches:[],
+        categorias:[],
+        categoria:"",
+        idcategoria:0,
         modalTitle:"",
         idlanche:0,
         nomelanche:"",
         valorlanche:0,
         descricaolanche:"",
         imagemlanche:"",
-        idcategoria:0
+        imagemlanche:"anonimo.jpg",
+        photoPath:variaveis.PHOT_URL
     }
 },
 methods:{
@@ -86,6 +100,7 @@ methods:{
         axios.get(variaveis.API_URL+"lanche").then((response)=>{
             this.lanches=response.data;
         });
+        
     },
     addClick(){
         this.modalTitle="Adicionar lanche";
@@ -93,8 +108,8 @@ methods:{
         this.nomelanche="";
         this.valorlanche=0;
         this.descricaolanche="";
-        this.imagemlanche="";
-        this.idcategoria=0;
+        this.imagemlanche="anonimo.jpg";
+        this.categoria="";
     },
     editClick(l){
         this.modalTitle="Editar lanche";
@@ -103,7 +118,7 @@ methods:{
         this.valorlanche=l.valorlanche;
         this.descricaolanche=l.descricaolanche;
         this.imagemlanche=l.imagemlanche;
-        this.idcategoria=l.idcategoria;
+        this.categoria=l.categoria;
     },
     createClick(){
         axios.post(variaveis.API_URL+"lanche",{
@@ -111,7 +126,7 @@ methods:{
             valorlanche:this.valorlanche,
             descricaolanche:this.descricaolanche,
             imagemlanche:this.imagemlanche,
-            idcategoria:this.idcategoria
+            idcategoria:this.categoria
         }).then((response)=>{
             this.refreshData();
             alert(response.data);
@@ -124,7 +139,7 @@ methods:{
             valorlanche:this.valorlanche,
             descricaolanche:this.descricaolanche,
             imagemlanche:this.imagemlanche,
-            idcategoria:this.idcategoria
+            categoria:this.categoria
         }).then((response)=>{
             this.refreshData();
             alert(response.data);
@@ -140,6 +155,15 @@ methods:{
             this.refreshData();
             alert(response.data);
         });
+    },
+    imageUpload(event){
+        let formData = new FormData();
+        formData.append('file',event.target.files[0]);
+        axios.post(
+            variaveis.API_URL+"lanche/savefile",formData).then((response)=>{
+                this.imagemlanche=response.data;
+            });
+        
     }
 },
 mounted:function(){

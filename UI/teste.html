@@ -6,36 +6,87 @@
 </head>
 <body>
        
-    <div id="container-login">
-        <h3>Login</h3>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-12">
-                    <label >E-mail:</label>
-                    <input type="text" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-12">
-                    <label >Senha:</label>
-                    <input type="password" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <router-link  class="btn btn-link" id="btn-esqueceu" to="/">Esqueceu a senha?</router-link>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" id="ovBTN_login">Entrar</button>
-                </div>
-            </div>
-            
-        <label>Não possui conta?</label>
-        <router-link  class="btn btn-link" id="btn-novo" to="/usuario">Crie sua conta</router-link>
-</div>               
+    <div>
+        <button type="button" class="btn btn-primary m-2 fload-end" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" @click="addClick()">Adicionar</button>
+        <table class="table" style="color: white;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Descição</th>
+                    <th>Categoria</th>
+                    <th>Imagem</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="l in lanches">
+                    <td>{{l.idlanche}}</td>
+                    <td>{{l.nomelanche}}</td>
+                    <td>{{l.valorlanche}}</td>
+                    <td>{{l.descricaolanche}}</td>
+                    <td>{{l.nomecategoria}}</td>
+                    <td>{{l.imagemlanche}}</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-light mr-1" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" @click="editClick(l)">editar</button>
+                        <button type="button" class="btn btn-light mr-1" @click="deleteClick(l.idlanche)">deletar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel" style="color: black;">{{modalTitle}}</h5>
+                        <button type="button" class="bnt-close" data-bs-dismiss="modal" aria-label="Close">X
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="d-flex flex-row w-50 bd-hightlight mb-3">
+                        <div class="p-2 w-50 bd-hightlight">    
+                            <div class="input-group mb-3">
+                                    <span class="input-group-text">Nome</span>
+                                    <input type="text" class="form-control" v-model="nomelanche ">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Valor</span>
+                                    <input type="text" class="form-control" v-model="valorlanche ">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Descrição</span>
+                                    <input type="text" class="form-control" v-model="descricaolanche ">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Categoria</span>
+                                    <select class="form-select" v-model="categoria">
+                                    <option v-for="c in categorias">
+                                    {{c.nomecategoria}}
+                                    </option>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Imagem</span>
+                                    <input type="text" class="form-control" v-model="imagemlanche">
+                                </div>
+                            </div>
+                            <div class="p-2 w-50 bd-highlight">
+                                <img width="250px" height="250px"
+                                :src="PhotoPath+PhotoFileName"/>
+                                <input class="m-2" type="file" @change="imageUpload" />
+                            </div>
+                        </div>
 
+                        <button type="button" @click="createClick()" v-if="idlanche==0" class="btn btn-primary">Salvar</button>
+                        <button type="button" @click="updateClick()" v-if="idlanche!=0" class="btn btn-primary">Alterar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         
 </body>                
 </html>

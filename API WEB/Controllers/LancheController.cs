@@ -16,10 +16,10 @@ namespace API_WEB.Controllers
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _env;
 
-        public LancheController(IConfiguration configuration,IWebHostEnvironment web)
+        public LancheController(IConfiguration configuration,IWebHostEnvironment env)
         {
             _configuration = configuration;
-            _env = web;
+            _env = env;
         }
 
         [HttpGet]
@@ -55,7 +55,7 @@ namespace API_WEB.Controllers
                 insert into lanche(nomelanche,valorlanche,descricaolanche,imagemlanche,idcategoria)
                 values(@nomecategoria,@valorlanche,@descricaolanche,@imagemlanche,@idcategoria)
             ";
-
+            
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DataBase");
             NpgsqlDataReader myreader;
@@ -151,7 +151,7 @@ namespace API_WEB.Controllers
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
                 string filename = postedFile.FileName;
-                var physicalPath = _env.ContentRootPath + "/Photos/"+ filename;
+                var physicalPath = _env.ContentRootPath + "/Photos/" + filename;
                 using (var stream = new FileStream(physicalPath, FileMode.Create))
                 {
                     postedFile.CopyTo(stream);
@@ -160,7 +160,7 @@ namespace API_WEB.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("anonimo.png");
+                return new JsonResult("anonimo.jpg");
             }
         }
     }

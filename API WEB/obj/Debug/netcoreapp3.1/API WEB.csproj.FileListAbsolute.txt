@@ -60,3 +60,11 @@ C:\Users\rr\Desktop\API WEB\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityMo
 C:\Users\rr\Desktop\API WEB\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\rr\Desktop\API WEB\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\rr\Desktop\API WEB\API WEB\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Users\rrobasseto\Desktop\Web Ecommerce\API WEB\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
