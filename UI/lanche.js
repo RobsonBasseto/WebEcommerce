@@ -56,12 +56,14 @@ const lanche={template:`
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Categoria</span>
-                                    <select class="form-select" v-model="categoria">
-                                        <option v-for="l in lanches">
-                                        {{l.nomecategoria}}
+                                    <select class="form-select" v-model="nomecategoria">
+                                        <option v-for="c in categorias">
+                                        {{c.nomecategoria}}
+                                        
                                         </option>
                                     </select>
                                 </div>
+                                <p>{{idcategoria}}</p>
                             </div>
                            
                             <div class="p-2 w-50 bd-highlight">
@@ -71,8 +73,8 @@ const lanche={template:`
                             </div>
                         </div>
 
-                        <button type="button" @click="createClick()" v-if="idlanche==0" class="btn btn-primary">Salvar</button>
-                        <button type="button" @click="updateClick()" v-if="idlanche!=0" class="btn btn-primary">Alterar</button>
+                        <button type="button" @click="exibirID()" v-if="idlanche==0" class="btn btn-primary">Salvar</button>
+                        <button type="button" @click="exibirID()" v-if="idlanche!=0" class="btn btn-primary">Alterar</button>
                     </div>
                 </div>
             </div>
@@ -83,7 +85,7 @@ data(){
     return{
         lanches:[],
         categorias:[],
-        categoria:"",
+        nomecategoria:"",
         idcategoria:0,
         modalTitle:"",
         idlanche:0,
@@ -100,7 +102,13 @@ methods:{
         axios.get(variaveis.API_URL+"lanche").then((response)=>{
             this.lanches=response.data;
         });
+        axios.get(variaveis.API_URL+"categoria").then((response)=>{
+            this.categorias=response.data;
+        });
         
+    },
+    exibirID(){
+        alert(this.idcategoria);
     },
     addClick(){
         this.modalTitle="Adicionar lanche";
@@ -109,7 +117,7 @@ methods:{
         this.valorlanche=0;
         this.descricaolanche="";
         this.imagemlanche="anonimo.jpg";
-        this.categoria="";
+        this.idcategoria=0;
     },
     editClick(l){
         this.modalTitle="Editar lanche";
@@ -118,7 +126,7 @@ methods:{
         this.valorlanche=l.valorlanche;
         this.descricaolanche=l.descricaolanche;
         this.imagemlanche=l.imagemlanche;
-        this.categoria=l.categoria;
+        this.nomecategoria=l.nomecategoria;
     },
     createClick(){
         axios.post(variaveis.API_URL+"lanche",{
@@ -126,7 +134,7 @@ methods:{
             valorlanche:this.valorlanche,
             descricaolanche:this.descricaolanche,
             imagemlanche:this.imagemlanche,
-            idcategoria:this.categoria
+            idcategoria:this.idcategoria
         }).then((response)=>{
             this.refreshData();
             alert(response.data);
@@ -139,7 +147,7 @@ methods:{
             valorlanche:this.valorlanche,
             descricaolanche:this.descricaolanche,
             imagemlanche:this.imagemlanche,
-            categoria:this.categoria
+            idcategoria:this.nomecategoria
         }).then((response)=>{
             this.refreshData();
             alert(response.data);
