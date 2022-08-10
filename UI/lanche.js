@@ -56,14 +56,12 @@ const lanche={template:`
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Categoria</span>
-                                    <select class="form-select" v-model="nomecategoria">
-                                        <option v-for="c in categorias">
+                                    <select class="form-select" v-model="idcategoria">
+                                        <option v-for="c in categorias" v-bind:value="c.idcategoria">
                                         {{c.nomecategoria}}
-                                        
                                         </option>
                                     </select>
                                 </div>
-                                <p>{{idcategoria}}</p>
                             </div>
                            
                             <div class="p-2 w-50 bd-highlight">
@@ -73,8 +71,8 @@ const lanche={template:`
                             </div>
                         </div>
 
-                        <button type="button" @click="exibirID()" v-if="idlanche==0" class="btn btn-primary">Salvar</button>
-                        <button type="button" @click="exibirID()" v-if="idlanche!=0" class="btn btn-primary">Alterar</button>
+                        <button type="button" @click="createClick()" v-if="idlanche==0" class="btn btn-primary">Salvar</button>
+                        <button type="button" @click="updateClick()" v-if="idlanche!=0" class="btn btn-primary">Alterar</button>
                     </div>
                 </div>
             </div>
@@ -107,9 +105,6 @@ methods:{
         });
         
     },
-    exibirID(){
-        alert(this.idcategoria);
-    },
     addClick(){
         this.modalTitle="Adicionar lanche";
         this.idlanche=0;
@@ -118,6 +113,7 @@ methods:{
         this.descricaolanche="";
         this.imagemlanche="anonimo.jpg";
         this.idcategoria=0;
+        this.nomecategoria="";
     },
     editClick(l){
         this.modalTitle="Editar lanche";
@@ -127,6 +123,7 @@ methods:{
         this.descricaolanche=l.descricaolanche;
         this.imagemlanche=l.imagemlanche;
         this.nomecategoria=l.nomecategoria;
+        this.idcategoria=l.idcategoria;
     },
     createClick(){
         axios.post(variaveis.API_URL+"lanche",{
@@ -134,6 +131,7 @@ methods:{
             valorlanche:this.valorlanche,
             descricaolanche:this.descricaolanche,
             imagemlanche:this.imagemlanche,
+            nomecategoria:this.nomecategoria,
             idcategoria:this.idcategoria
         }).then((response)=>{
             this.refreshData();
