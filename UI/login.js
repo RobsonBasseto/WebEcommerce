@@ -44,11 +44,12 @@ methods:{
             senha:this.senha
         }).then((response)=>{
             console.log(response.data);
-            if(response.data != 404){
-                this.$router.push('/lanche')
+            if(response.data != 'Email ou senha incorretos'){
+                this.$router.push('/')
+            }else{
+                alert(response.data);
             }
         });
     }
 }
-
 }

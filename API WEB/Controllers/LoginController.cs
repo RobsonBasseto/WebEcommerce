@@ -34,7 +34,7 @@ namespace API_WEB.Controllers
                 var token = Generate(user);
                 return Ok(token);
             }
-            return NotFound("Usuario não encontrado");
+            return new JsonResult("Email ou senha incorretos");
         }
 
         private string Generate(Login login)
